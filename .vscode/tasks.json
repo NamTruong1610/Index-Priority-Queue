@@ -1,0 +1,49 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build and Run IPQ Tests",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-std=c++20",
+                "-g",  // Include debugging information
+                "-isystem", "/opt/homebrew/opt/googletest/include",
+                "/Users/namtruong/Desktop/Projects/IPQ_Project/IPQ/main.cpp",
+                "-o", "/Users/namtruong/Desktop/Projects/IPQ_Project/IPQ/main",
+                "-L/opt/homebrew/opt/googletest/lib",
+                "-lgtest",
+                "-lgtest_main",
+                "-pthread"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        },
+        {
+            "label": "Run IPQ Tests",
+            "dependsOn": "Build and Run IPQ Tests",
+            "type": "shell",
+            "command": "/Users/namtruong/Desktop/Projects/IPQ_Project/IPQ/main",
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true
+            }
+        }
+    ]
+}
